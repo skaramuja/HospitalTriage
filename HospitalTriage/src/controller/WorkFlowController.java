@@ -6,7 +6,7 @@ import model.EmergencyRoomEmptyException;
 import model.Hospital;
 import model.Patient;
 
-public class WorkFlow {
+public class WorkFlowController {
 	private EmergencyRoom emergencyRoom = new EmergencyRoom();
 	private Hospital hospital = new Hospital();
 	private Discharged discharged = new Discharged();
@@ -14,7 +14,7 @@ public class WorkFlow {
 	/**
 	 * Constructor with no parameters that adds patients to hospital
 	 */
-	public WorkFlow() {
+	public WorkFlowController() {
 		System.out.println("Admitting patients...");
 		System.out.println("Patients in Emergency Room: " + emergencyRoom.toString());
 		System.out.println("Patients in Hospital: " + hospital.toString());
