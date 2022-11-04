@@ -6,6 +6,7 @@
 
 package model;
 
+import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public class EmergencyRoom {
@@ -48,6 +49,15 @@ public class EmergencyRoom {
 
 	}
 	
+	/**
+	 * Convert a Queue to a List
+	 * @return patients
+	 */
+	public ArrayList<Patient> getEmergencyRoomPatients(){
+		return new ArrayList<Patient>(patients);
+	}
+
+
 	/**
 	 * Indicates if there are any patients in the emergency room
 	 * @return boolean

@@ -14,7 +14,7 @@ public class PatientGridPanel extends JPanel {
 	public PatientGridPanel() {	
 		GridLayout layout = new GridLayout(6, 10, 1, 1);
 		setLayout(layout);
-		setBackground(Color.red);
+		setBackground(Color.white);
 	}
 
 	public ArrayList<Patient> getPatients() {
@@ -23,12 +23,13 @@ public class PatientGridPanel extends JPanel {
 
 	public void setPatients(ArrayList<Patient> patients) {
 		this.patients = patients;
+		removeAll();
 		for (int i = 0; i < patients.size(); i++) {
 			Patient patient = patients.get(i);
 			PatientView patientView = new PatientView(patient.getPatientID(), patient.getPriority());
 			add(patientView);
 		}
-		
+		repaint();
 		revalidate();
 	}
 	

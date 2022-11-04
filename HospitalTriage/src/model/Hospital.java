@@ -6,11 +6,11 @@
 
 package model;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Hospital {
 	private final int MAX_CAPACITY = 50;
-	private LinkedList<Patient> patients = new LinkedList<Patient>();
+	private ArrayList<Patient> patients = new ArrayList<Patient>();
 	private String status = "Hospital";
 
 	/**
@@ -19,6 +19,20 @@ public class Hospital {
 	public Hospital() {
 
 	}
+	
+	
+
+	public ArrayList<Patient> getPatients() {
+		return patients;
+	}
+
+
+
+	public void setPatients(ArrayList<Patient> patients) {
+		this.patients = patients;
+	}
+
+
 
 	/**
 	 * Determines available beds in the hospital
@@ -58,8 +72,9 @@ public class Hospital {
 	 * @return patient that was discharged
 	 */
 	public Patient discharge() {
-		int index = (int) (Math.random() * occupiedBeds());
+		int index = (int) (Math.random() * occupiedBeds() - 1);
 		return patients.remove(index);
+
 	}
 
 	@Override

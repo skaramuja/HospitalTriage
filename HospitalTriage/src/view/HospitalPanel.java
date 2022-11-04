@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -19,13 +20,10 @@ public class HospitalPanel extends JPanel{
 	public HospitalPanel() {		
 		FlowLayout layout = new FlowLayout();
 		setLayout(layout);
-		
-		JLabel label = new JLabel("Hospital");
-		
-		add(label);
+		setBorder(BorderFactory.createTitledBorder("Hospital"));
 		add(patientGridPanel);
 		
-		setBackground(Color.yellow);
+		setBackground(Color.white);
 		
 		setVisible(true);
 	}

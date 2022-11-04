@@ -6,11 +6,12 @@
 
 package model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Discharged {
 	private String status = "Discharged";
-	private LinkedList<Patient> patients = new LinkedList<Patient>();
+	private ArrayList<Patient> patients = new ArrayList<Patient>();
 
 	/**
 	 * Default constructor with no parameters
@@ -18,6 +19,20 @@ public class Discharged {
 	public Discharged() {
 
 	}
+	
+	
+
+	public ArrayList<Patient> getPatients() {
+		return patients;
+	}
+
+
+
+	public void setPatients(ArrayList<Patient> patients) {
+		this.patients = patients;
+	}
+
+
 
 	/**
 	 * Mark a patient as discharged

@@ -19,6 +19,7 @@ public class PatientView extends JPanel {
 		
 		JLabel patientIDLabel = new JLabel(Integer.toString(patientID));
 		add(patientIDLabel);
+		setBackground(Color.white);
 		
         setVisible(true);
 	}
@@ -41,12 +42,12 @@ public class PatientView extends JPanel {
 
 	@Override
 	public void paintComponent(Graphics g){
+	super.paintComponent(g);
 	 Graphics2D person = (Graphics2D) g;
 	 
 	 person.setColor(getPriorityColor());
 	 
 	 person.fillOval(0, 0, g.getClipBounds().width, g.getClipBounds().height);
-	 
 	 
 
 	}

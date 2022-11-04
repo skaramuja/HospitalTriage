@@ -2,9 +2,9 @@ package view;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -19,20 +19,17 @@ public class EmergencyRoomPanel extends JPanel {
 	public EmergencyRoomPanel() {
 		FlowLayout layout = new FlowLayout();
 		setLayout(layout);
-
-		JLabel label = new JLabel("Emergency Room");
-
-		add(label);
+		setBorder(BorderFactory.createTitledBorder("Emergency Room"));
 		add(patientGridPanel);
 
-		setBackground(Color.red);
+		setBackground(Color.white);
 
 		setVisible(true);
 	}
 
 	public void setPatients(ArrayList<Patient> patients) {
 		patientGridPanel.setPatients(patients);
-		
+		revalidate();
 	}
 
 }
