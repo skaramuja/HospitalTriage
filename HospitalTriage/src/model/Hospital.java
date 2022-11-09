@@ -19,20 +19,20 @@ public class Hospital {
 	public Hospital() {
 
 	}
-	
-	
 
+	/**
+	 * Getter for patients
+	 */
 	public ArrayList<Patient> getPatients() {
 		return patients;
 	}
 
-
-
+	/**
+	 * Setter for patients
+	 */
 	public void setPatients(ArrayList<Patient> patients) {
 		this.patients = patients;
 	}
-
-
 
 	/**
 	 * Determines available beds in the hospital
@@ -41,7 +41,7 @@ public class Hospital {
 	public int openBeds() {
 		return MAX_CAPACITY - patients.size();
 	}
-	
+
 	/**
 	 * Determines occupied beds in the hospital
 	 * @return integer representing occupied beds
@@ -49,7 +49,7 @@ public class Hospital {
 	public int occupiedBeds() {
 		return patients.size();
 	}
-	
+
 	/**
 	 * Determines if hospital is full
 	 * @return boolean
@@ -69,6 +69,7 @@ public class Hospital {
 
 	/**
 	 * Discharges patient from hospital
+	 * 
 	 * @return patient that was discharged
 	 */
 	public Patient discharge() {
@@ -79,6 +80,6 @@ public class Hospital {
 
 	@Override
 	public String toString() {
-		return "Hospital [patients=" + patients + "]";
+		return "Hospital [patients=" + getPatients() + "]";
 	}
 }

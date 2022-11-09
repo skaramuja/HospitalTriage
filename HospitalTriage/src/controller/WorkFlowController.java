@@ -1,29 +1,41 @@
 package controller;
 
+import java.awt.Color;
+import java.awt.Frame;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 import javax.lang.model.element.Element;
+import javax.swing.JFrame;
 
 import model.Discharged;
 import model.EmergencyRoom;
 import model.EmergencyRoomEmptyException;
 import model.Hospital;
 import model.Patient;
+import view.PatientSearchPanel;
 import view.WorkFlowFrame;
 
 public class WorkFlowController implements SimulationControlHandler {
 	private EmergencyRoom emergencyRoom = new EmergencyRoom();
 	private Hospital hospital = new Hospital();
 	private Discharged discharged = new Discharged();
-	WorkFlowFrame workFlowFrame = new WorkFlowFrame();
+	private WorkFlowFrame workFlowFrame = new WorkFlowFrame();
+	private LinkedHashMap<Integer, Patient> patientsHashMap = new LinkedHashMap<Integer, Patient>();
 
 
 	/**
-	 * Constructor with no parameters
+	 * Constructor with no parameters that adds patients to the emergency room and hash map
 	 */
 	public WorkFlowController() {
-		workFlowFrame.setEmergencyRoomPatient(emergencyRoom.getEmergencyRoomPatients());
+		ArrayList<Patient> patients = emergencyRoom.getEmergencyRoomPatients();
+		workFlowFrame.setEmergencyRoomPatient(patients);
 		workFlowFrame.setSimulationControlHandler(this);
+		for(int i = 0; i < emergencyRoom.getEmergencyRoomPatients().size(); i++) {
+			Patient patient = patients.get(i);
+			patientsHashMap.put(patient.getPatientID(), patient);
+		}
+		
 	}
 
 	/**
@@ -89,5 +101,12 @@ public class WorkFlowController implements SimulationControlHandler {
 		workFlowFrame.setEmergencyRoomPatient(emergencyRoom.getEmergencyRoomPatients());
 		workFlowFrame.setHospitalPatient(new ArrayList<Patient>());
 		workFlowFrame.setDischargePatient(new ArrayList<Patient>());
+	}
+	
+	@Override
+	public void handleSearch() {
+		PatientSearchPanel patientSearchCustomDialog = new PatientSearchPanel(patientsHashMap);
+		patientSearchCustomDialog.setTitle("Search Patients");
+		patientSearchCustomDialog.setBounds(0, 0, 500, 200);
 	}
 }

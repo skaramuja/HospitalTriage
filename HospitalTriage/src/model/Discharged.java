@@ -19,20 +19,20 @@ public class Discharged {
 	public Discharged() {
 
 	}
-	
-	
 
+	/**
+	 * Getter for patients
+	 */
 	public ArrayList<Patient> getPatients() {
 		return patients;
 	}
 
-
-
+	/**
+	 * Setter for patients
+	 */
 	public void setPatients(ArrayList<Patient> patients) {
 		this.patients = patients;
 	}
-
-
 
 	/**
 	 * Mark a patient as discharged

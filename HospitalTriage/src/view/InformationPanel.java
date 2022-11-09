@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.SimulationControlHandler;
@@ -53,23 +54,11 @@ public class InformationPanel extends JPanel {
 
 		// Add labels
 		add(emergencyRoomLabel);
-		setVisible(true);
-
 		add(hospitalLabel);
-		setVisible(true);
-
 		add(dischargeLabel);
-		setVisible(true);
-		
 		add(priortyHigh);
-		setVisible(true);
-		
 		add(priortyMediumHigh);
-		setVisible(true);
-		
 		add(priortyMediumLow);
-		setVisible(true);
-		
 		add(priortyLow);
 		setVisible(true);
 
@@ -84,6 +73,12 @@ public class InformationPanel extends JPanel {
 		resetButton.setSize(CYCLE_BUTTON_WIDTH, CYCLE_BUTTON_HEIGHT);
 		resetButton.setLabel("Reset");
 		add(resetButton);
+		
+		// Add search button
+		Button searchButton = new Button();
+		searchButton.setSize(CYCLE_BUTTON_WIDTH, CYCLE_BUTTON_HEIGHT);
+		searchButton.setLabel("Search");
+		add(searchButton);
 
 		// Add action listener
 		CycleClickListener c = new CycleClickListener();
@@ -91,6 +86,9 @@ public class InformationPanel extends JPanel {
 
 		ResetListener r = new ResetListener();
 		resetButton.addActionListener(r);
+		
+		SearchListener s = new SearchListener();
+		searchButton.addActionListener(s);
 
 	}
 	
@@ -116,48 +114,78 @@ public class InformationPanel extends JPanel {
 		setPriortyLowTotal(lowTotal);
 	}
 	
+	/**
+	 * Setter for priortyHighTotal
+	 */
 	public void setPriortyHighTotal(int priortyHighTotal) {
 		this.priortyHighTotal = priortyHighTotal;
 		priortyHigh.setText("Priorty 1: " + priortyHighTotal);
 	}
 	
+	/**
+	 * Setter for priortyMediumHighTotal
+	 */
 	public void setPriortyMediumHighTotal(int priortyMediumHighTotal) {
 		this.priortyMediumHighTotal = priortyMediumHighTotal;
 		priortyMediumHigh.setText("Priorty 2: " + priortyMediumHighTotal);
 	}
 	
+	/**
+	 * Setter for priortyMediumLowTotal
+	 */
 	public void setPriortyMediumLowTotal(int priortyMediumLowTotal) {
 		this.priortyMediumLowTotal = priortyMediumLowTotal;
 		priortyMediumLow.setText("Priorty 3: " + priortyMediumLowTotal);
 	}
 	
+	/**
+	 * Setter for priortyLowTotal
+	 */
 	public void setPriortyLowTotal(int priortyLowTotal) {
 		this.priortyLowTotal = priortyLowTotal;
 		priortyLow.setText("Priorty 4: " + priortyLowTotal);
 	}
 	
+	/**
+	 * Setter for emergencyRoomPatients
+	 */
 	public void setEmergencyRoomPatients(int emergencyRoomPatients) {
 		this.emergencyRoomPatients = emergencyRoomPatients;
 		emergencyRoomLabel.setText("ER: " + emergencyRoomPatients);
 	}
 	
+	/**
+	 * Getter for emergencyRoomPatients
+	 */
 	public int getEmergencyRoomPatients() {
 		return emergencyRoomPatients;
 	}
 
+	/**
+	 * Getter for hospitalPatients
+	 */
 	public int getHospitalPatients() {
 		return hospitalPatients;
 	}
 
+	/**
+	 * Setter for hospitalPatients
+	 */
 	public void setHospitalPatients(int hospitalPatients) {
 		this.hospitalPatients = hospitalPatients;
 		hospitalLabel.setText("Hospital: " + hospitalPatients);
 	}
 
+	/**
+	 * Getter for DischargedPatients
+	 */
 	public int getDischargedPatients() {
 		return dischargedPatients;
 	}
 
+	/**
+	 * Setter for DischargedPatients
+	 */
 	public void setDischargedPatients(int dischargedPatients) {
 		this.dischargedPatients = dischargedPatients;
 		dischargeLabel.setText("Discharged: " + dischargedPatients);
@@ -196,6 +224,17 @@ public class InformationPanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			simulationControlHandler.handleReset();
+		}
+	}
+	
+	/**
+	 * Class that implements actionListener to handle search button press
+	 * @param e
+	 */
+	class SearchListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			simulationControlHandler.handleSearch();
 		}
 	}
 

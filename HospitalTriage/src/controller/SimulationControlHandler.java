@@ -11,4 +11,6 @@ public interface SimulationControlHandler {
 	 * Method to handle reset button
 	 */
 	public void handleReset();
+
+	public void handleSearch();
 }
