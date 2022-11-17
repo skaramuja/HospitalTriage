@@ -1,8 +1,14 @@
+/**
+ * JUnit testing for hospital model
+ * @author Sabina Johnson
+ * @version 1.0
+ */
+
 package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,7 +34,7 @@ class HospitalTests {
 	void testSetPatients() {
 		Patient patient = new Patient(3);
 		Patient patient1 = new Patient(2);
-		ArrayList<Patient> patients = new ArrayList<Patient>();
+		LinkedList<Patient> patients = new LinkedList<Patient>();
 		patients.add(patient);
 		patients.add(patient1);
 		unitUnderTest.setPatients(patients);
@@ -39,7 +45,7 @@ class HospitalTests {
 	void testOpenBeds() {
 		Patient patient = new Patient(3);
 		Patient patient1 = new Patient(2);
-		ArrayList<Patient> patients = new ArrayList<Patient>();
+		LinkedList<Patient> patients = new LinkedList<Patient>();
 		patients.add(patient);
 		patients.add(patient1);
 		unitUnderTest.setPatients(patients);
@@ -51,7 +57,7 @@ class HospitalTests {
 	void testOccupiedBeds() {
 		Patient patient = new Patient(3);
 		Patient patient1 = new Patient(2);
-		ArrayList<Patient> patients = new ArrayList<Patient>();
+		LinkedList<Patient> patients = new LinkedList<Patient>();
 		patients.add(patient);
 		patients.add(patient1);
 		unitUnderTest.setPatients(patients);

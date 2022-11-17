@@ -1,5 +1,5 @@
 /**
- * Discharged class that marks patients as discharged (Linked List)
+ * Discharged class that marks patients as discharged
  * @author Sabina Johnson
  * @version 1.0
  */
@@ -7,7 +7,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class Discharged {
 	private String status = "Discharged";

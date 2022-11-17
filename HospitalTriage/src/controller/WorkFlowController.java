@@ -1,12 +1,13 @@
+/**
+ * Workflow controller 
+ * @author Sabina Johnson
+ * @version 1.0
+ */
+
 package controller;
 
-import java.awt.Color;
-import java.awt.Frame;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-
-import javax.lang.model.element.Element;
-import javax.swing.JFrame;
+import java.util.LinkedList;
 
 import model.Discharged;
 import model.EmergencyRoom;
@@ -28,19 +29,17 @@ public class WorkFlowController implements SimulationControlHandler {
 	 * Constructor with no parameters that adds patients to the emergency room and hash map
 	 */
 	public WorkFlowController() {
-		ArrayList<Patient> patients = emergencyRoom.getEmergencyRoomPatients();
+		LinkedList<Patient> patients = emergencyRoom.getEmergencyRoomPatients();
 		workFlowFrame.setEmergencyRoomPatient(patients);
 		workFlowFrame.setSimulationControlHandler(this);
 		for(int i = 0; i < emergencyRoom.getEmergencyRoomPatients().size(); i++) {
 			Patient patient = patients.get(i);
 			patientsHashMap.put(patient.getPatientID(), patient);
 		}
-		
 	}
 
 	/**
-	 * Admits patients into hospital while hospital is not full and patient waiting
-	 * in emergency room
+	 * Admits patients into hospital while hospital is not full and patient waiting in emergency room
 	 */
 	public void admit() {
 		while (!emergencyRoom.isEmpty() && !hospital.isFull()) {
@@ -80,6 +79,9 @@ public class WorkFlowController implements SimulationControlHandler {
 		}
 	}
 
+	/**
+	 * Method that handles admitting and discharging patient for each cycle
+	 */
 	@Override
 	public void handleNextCycle() {
 		if (hospital.occupiedBeds() > 0) {
@@ -89,9 +91,13 @@ public class WorkFlowController implements SimulationControlHandler {
 		insertionSortDischargedPatients();
 		workFlowFrame.setEmergencyRoomPatient(emergencyRoom.getEmergencyRoomPatients());
 		workFlowFrame.setHospitalPatient(hospital.getPatients());
-		workFlowFrame.setDischargePatient(discharged.getPatients());
+		LinkedList<Patient> patientList = new LinkedList<Patient>(discharged.getPatients());
+		workFlowFrame.setDischargePatient(patientList);
 	}
 
+	/**
+	 * Override method that handles reset 
+	 */
 	@Override
 	public void handleReset() {
 		this.emergencyRoom = new EmergencyRoom();
@@ -99,10 +105,13 @@ public class WorkFlowController implements SimulationControlHandler {
 		this.discharged = new Discharged();
 		
 		workFlowFrame.setEmergencyRoomPatient(emergencyRoom.getEmergencyRoomPatients());
-		workFlowFrame.setHospitalPatient(new ArrayList<Patient>());
-		workFlowFrame.setDischargePatient(new ArrayList<Patient>());
+		workFlowFrame.setHospitalPatient(new LinkedList<Patient>());
+		workFlowFrame.setDischargePatient(new LinkedList<Patient>());
 	}
 	
+	/**
+	 * Override method that handles search 
+	 */
 	@Override
 	public void handleSearch() {
 		PatientSearchPanel patientSearchCustomDialog = new PatientSearchPanel(patientsHashMap);

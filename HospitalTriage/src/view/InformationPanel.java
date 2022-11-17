@@ -1,16 +1,19 @@
+/**
+ * Create a panel for information
+ * @author Sabina Johnson
+ * @version 1.0
+ */
+
 package view;
 
 import java.awt.Button;
-import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import controller.SimulationControlHandler;
@@ -25,11 +28,7 @@ public class InformationPanel extends JPanel {
 	private int hospitalPatients = 0;
 	private int dischargedPatients= 0;
 	
-	private int priortyHighTotal = 0;
-	private int priortyMediumHighTotal= 0;
-	private int priortyMediumLowTotal = 0;
-	private int priortyLowTotal= 0;
-	
+	// Add labels to information panel
 	JLabel emergencyRoomLabel = new JLabel("ER: " + 0);
 	JLabel hospitalLabel = new JLabel("Hospital: " + 0);
 	JLabel dischargeLabel = new JLabel("Discharged: " + 0);
@@ -40,10 +39,7 @@ public class InformationPanel extends JPanel {
 	JLabel priortyLow = new JLabel("Priorty 4: " + 0);
 
 	/**
-	 * Display program information in new panel for each cycle
-	 * @param emergencyRoomPatients
-	 * @param hospitalPatients
-	 * @param dischargedPatients
+	 * Display information panel and update labels for each cycle
 	 */
 	public InformationPanel() {
 		FlowLayout layout = new FlowLayout();
@@ -52,7 +48,7 @@ public class InformationPanel extends JPanel {
 		add(patientGridPanel);
 		layout.setHgap(30);
 
-		// Add labels
+		// Add labels to panel
 		add(emergencyRoomLabel);
 		add(hospitalLabel);
 		add(dischargeLabel);
@@ -92,7 +88,10 @@ public class InformationPanel extends JPanel {
 
 	}
 	
-	public void setPatients(ArrayList<Patient> patients) {
+	/**
+	 * Tracks total patients for all priority levels
+	 */
+	public void setPatients(LinkedList<Patient> patients) {
 		int highTotal = 0;
 		int mediumHighTotal = 0;
 		int mediumLowTotal = 0;
@@ -118,7 +117,6 @@ public class InformationPanel extends JPanel {
 	 * Setter for priortyHighTotal
 	 */
 	public void setPriortyHighTotal(int priortyHighTotal) {
-		this.priortyHighTotal = priortyHighTotal;
 		priortyHigh.setText("Priorty 1: " + priortyHighTotal);
 	}
 	
@@ -126,7 +124,6 @@ public class InformationPanel extends JPanel {
 	 * Setter for priortyMediumHighTotal
 	 */
 	public void setPriortyMediumHighTotal(int priortyMediumHighTotal) {
-		this.priortyMediumHighTotal = priortyMediumHighTotal;
 		priortyMediumHigh.setText("Priorty 2: " + priortyMediumHighTotal);
 	}
 	
@@ -134,7 +131,6 @@ public class InformationPanel extends JPanel {
 	 * Setter for priortyMediumLowTotal
 	 */
 	public void setPriortyMediumLowTotal(int priortyMediumLowTotal) {
-		this.priortyMediumLowTotal = priortyMediumLowTotal;
 		priortyMediumLow.setText("Priorty 3: " + priortyMediumLowTotal);
 	}
 	
@@ -142,7 +138,6 @@ public class InformationPanel extends JPanel {
 	 * Setter for priortyLowTotal
 	 */
 	public void setPriortyLowTotal(int priortyLowTotal) {
-		this.priortyLowTotal = priortyLowTotal;
 		priortyLow.setText("Priorty 4: " + priortyLowTotal);
 	}
 	

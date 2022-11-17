@@ -1,11 +1,16 @@
+/**
+ * Create a panel for hospital
+ * @author Sabina Johnson
+ * @version 1.0
+ */
+
 package view;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.Patient;
@@ -16,6 +21,7 @@ public class HospitalPanel extends JPanel{
 	
 	/**
 	 * Constructor with no parameters that creates an hospital panel
+	 * Set layout, title, and background
 	 */
 	public HospitalPanel() {		
 		FlowLayout layout = new FlowLayout();
@@ -27,10 +33,12 @@ public class HospitalPanel extends JPanel{
 		
 		setVisible(true);
 	}
-	
-	public void setPatients(ArrayList<Patient> patients) {
-		patientGridPanel.setPatients(patients);
-		
-	}
 
+	/**
+	 * Setter for patients
+	 */
+	public void setPatients(LinkedList<Patient> patients) {
+		patientGridPanel.setPatients(patients);
+
+	}
 }

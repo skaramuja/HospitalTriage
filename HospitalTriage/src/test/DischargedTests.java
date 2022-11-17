@@ -1,3 +1,9 @@
+/**
+ * JUnit testing for discharge model
+ * @author Sabina Johnson
+ * @version 1.0
+ */
+
 package test;
 
 import static org.junit.jupiter.api.Assertions.*;

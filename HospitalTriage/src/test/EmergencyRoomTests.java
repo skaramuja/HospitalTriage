@@ -1,3 +1,9 @@
+/**
+ * JUnit testing for emergency room model
+ * @author Sabina Johnson
+ * @version 1.0
+ */
+
 package test;
 
 import static org.junit.jupiter.api.Assertions.*;

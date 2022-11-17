@@ -1,11 +1,16 @@
+/**
+ * Create a panel for emergency room
+ * @author Sabina Johnson
+ * @version 1.0
+ */
+
 package view;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.Patient;
@@ -15,6 +20,7 @@ public class EmergencyRoomPanel extends JPanel {
 	
 	/**
 	 * Constructor with no parameters that creates an emergency room panel
+	 * Sets layout, title, and background
 	 */
 	public EmergencyRoomPanel() {
 		FlowLayout layout = new FlowLayout();
@@ -27,7 +33,10 @@ public class EmergencyRoomPanel extends JPanel {
 		setVisible(true);
 	}
 
-	public void setPatients(ArrayList<Patient> patients) {
+	/**
+	 * Setter for patients
+	 */
+	public void setPatients(LinkedList<Patient> patients) {
 		patientGridPanel.setPatients(patients);
 		revalidate();
 	}

@@ -6,7 +6,7 @@
 
 package model;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 public class EmergencyRoom {
@@ -24,7 +24,6 @@ public class EmergencyRoom {
 	
 	/**
 	 * Generates a random number of patients, assigns a priority, and adds them to the emergency room
-	 * @return patients
 	 */
 	private void addPatientsToER() {
 		int numPatients = (int) (Math.random() * MAX_CAPACITY);
@@ -36,7 +35,7 @@ public class EmergencyRoom {
 	}
 	
 	/**
-	 * Retrieves and removes the top priority patient
+	 * Retrieves and removes the top priority patient (head of the priority queue)
 	 * @return patient
 	 * @throws EmergencyRoomEmptyException
 	 */
@@ -46,15 +45,14 @@ public class EmergencyRoom {
 		} else {
 			throw new EmergencyRoomEmptyException();
 		}
-
 	}
 	
 	/**
 	 * Convert a Queue to a List
 	 * @return patients
 	 */
-	public ArrayList<Patient> getEmergencyRoomPatients(){
-		return new ArrayList<Patient>(patients);
+	public LinkedList<Patient> getEmergencyRoomPatients(){
+		return new LinkedList<Patient>(patients);
 	}
 
 

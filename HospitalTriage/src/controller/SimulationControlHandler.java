@@ -12,5 +12,8 @@ public interface SimulationControlHandler {
 	 */
 	public void handleReset();
 
+	/**
+	 * Method to handle search button
+	 */
 	public void handleSearch();
 }

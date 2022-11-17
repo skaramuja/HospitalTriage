@@ -1,16 +1,16 @@
 /**
- * Hospital class that adds patients to hospital beds (LinkedList)
+ * Hospital class that adds patients to hospital beds
  * @author Sabina Johnson
  * @version 1.0
  */
 
 package model;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Hospital {
 	private final int MAX_CAPACITY = 50;
-	private ArrayList<Patient> patients = new ArrayList<Patient>();
+	private LinkedList<Patient> patients = new LinkedList<Patient>();
 	private String status = "Hospital";
 
 	/**
@@ -23,14 +23,14 @@ public class Hospital {
 	/**
 	 * Getter for patients
 	 */
-	public ArrayList<Patient> getPatients() {
+	public LinkedList<Patient> getPatients() {
 		return patients;
 	}
 
 	/**
 	 * Setter for patients
 	 */
-	public void setPatients(ArrayList<Patient> patients) {
+	public void setPatients(LinkedList<Patient> patients) {
 		this.patients = patients;
 	}
 
@@ -69,7 +69,6 @@ public class Hospital {
 
 	/**
 	 * Discharges patient from hospital
-	 * 
 	 * @return patient that was discharged
 	 */
 	public Patient discharge() {

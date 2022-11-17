@@ -8,7 +8,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Container;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.swing.JFrame;
 
@@ -19,7 +19,7 @@ public class WorkFlowFrame extends JFrame{
 	private EmergencyRoomPanel emergencyRoomPanel = new EmergencyRoomPanel();
 	private HospitalPanel hospitalPanel = new HospitalPanel();
 	private DischargePanel dischargePanel = new DischargePanel();
-	private InformationPanel informationPanel = new InformationPanel(); //TODO
+	private InformationPanel informationPanel = new InformationPanel(); 
 	
 	private final static int FRAME_WIDTH = 1017; 
 	private final static int FRAME_HEIGHT = 740;
@@ -29,9 +29,7 @@ public class WorkFlowFrame extends JFrame{
 	private final static int Y_COORDINATE = 0;
 	
 	/**
-	 * Describe non-default constructor
-	 * @param paramName
-	 * @param paramName
+	 * Default constructor with no parameters
 	 */
 	public WorkFlowFrame() {
 		setTitle("Hospital Triage");
@@ -56,23 +54,33 @@ public class WorkFlowFrame extends JFrame{
 		container.add(dischargePanel);
 		container.add(informationPanel);
 
+		// Set background color
 		container.setBackground(Color.white);
 		
 		
 		setVisible(true);
 	}	
 	
-	public void setEmergencyRoomPatient(ArrayList<Patient> patients) {
+	/**
+	 * Update emergency room panel and update information panel with number of patients in the emergency room 
+	 */
+	public void setEmergencyRoomPatient(LinkedList<Patient> patients) {
 		emergencyRoomPanel.setPatients(patients);
 		informationPanel.setEmergencyRoomPatients(patients.size());
 	}
 	
-	public void setHospitalPatient(ArrayList<Patient> patients) {
+	/**
+	 * Update hospital panel and update information panel with number of patients in the hospital
+	 */
+	public void setHospitalPatient(LinkedList<Patient> patients) {
 		hospitalPanel.setPatients(patients);
 		informationPanel.setHospitalPatients(patients.size());
 	}
 	
-	public void setDischargePatient(ArrayList<Patient> patients) {
+	/**
+	 * Update discharge panel and update information panel with number of patients in the discharge 
+	 */
+	public void setDischargePatient(LinkedList<Patient> patients) {
 		dischargePanel.setPatients(patients);
 		informationPanel.setDischargedPatients(patients.size());
 		informationPanel.setPatients(patients);

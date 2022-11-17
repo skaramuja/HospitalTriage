@@ -1,3 +1,9 @@
+/**
+ * Display search panel and handle user validation for input
+ * @author Sabina Johnson
+ * @version 1.0
+ */
+
 package view;
 
 import javax.swing.JFrame;
@@ -67,16 +73,18 @@ public class PatientSearchPanel extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			typedText = textField.getText();
-			if (typedText.isBlank()) {
-				resultLabel.setText("Error: missing patient ID to search (Please enter a numeric Patient ID). ");
+			if (typedText.isBlank()) { // Validation if field is blank
+				resultLabel.setText("Error: missing patient ID to search (Please enter a numeric Patient ID).");
 			} else {
 				try {
 					int patientID = Integer.parseInt(typedText);
 					Patient patient = patientsHashMap.get(patientID);
 					if (patient != null) {
-						resultLabel.setText("Result: " + patient.toString());
+						resultLabel.setText("Result: " + patient.toString()); // update result label
+					} else {
+						resultLabel.setText("Error: patient not found (Please eneter another ID)"); // Validate if ID not found
 					}
-				} catch (Exception exception) {
+				} catch (Exception exception) { // Validate that field contains numeric value
 					resultLabel.setText(
 							"Error: " + typedText + " is not a valid input (Please enter a numeric Patient ID).");
 				}
@@ -88,7 +96,7 @@ public class PatientSearchPanel extends JFrame {
 	}
 
 	/**
-	 * Class that implements actionListener to handle search button press
+	 * Class that implements actionListener to handle cancel button press
 	 * @param e
 	 */
 	class CancelButton implements ActionListener {
