@@ -40,14 +40,22 @@ public class WorkFlowController implements SimulationControlHandler {
 
 	/**
 	 * Admits patients into hospital while hospital is not full and patient waiting in emergency room
+	 * and admits new patients into ER
 	 */
 	public void admit() {
 		while (!emergencyRoom.isEmpty() && !hospital.isFull()) {
 			try {
 				hospital.admit(emergencyRoom.getNextPriorityPatient());
+				
 			} catch (EmergencyRoomEmptyException e) {
 				e.printStackTrace();
 			}
+		}
+		emergencyRoom.addNewPatientsToER();
+		LinkedList<Patient> patients = emergencyRoom.getEmergencyRoomPatients();
+		for(int i = 0; i < patients.size(); i++) {
+			Patient patient = patients.get(i);
+			patientsHashMap.put(patient.getPatientID(), patient);
 		}
 	}
 
@@ -80,7 +88,7 @@ public class WorkFlowController implements SimulationControlHandler {
 	}
 
 	/**
-	 * Method that handles admitting and discharging patient for each cycle
+	 * Overrides SimulationControlHandler method that handles admitting and discharging patient for each cycle
 	 */
 	@Override
 	public void handleNextCycle() {
@@ -93,10 +101,11 @@ public class WorkFlowController implements SimulationControlHandler {
 		workFlowFrame.setHospitalPatient(hospital.getPatients());
 		LinkedList<Patient> patientList = new LinkedList<Patient>(discharged.getPatients());
 		workFlowFrame.setDischargePatient(patientList);
+		
 	}
 
 	/**
-	 * Override method that handles reset 
+	 * Override SimulationControlHandler method that handles reset 
 	 */
 	@Override
 	public void handleReset() {
@@ -107,10 +116,15 @@ public class WorkFlowController implements SimulationControlHandler {
 		workFlowFrame.setEmergencyRoomPatient(emergencyRoom.getEmergencyRoomPatients());
 		workFlowFrame.setHospitalPatient(new LinkedList<Patient>());
 		workFlowFrame.setDischargePatient(new LinkedList<Patient>());
+		LinkedList<Patient> patients = emergencyRoom.getEmergencyRoomPatients();
+		for(int i = 0; i < emergencyRoom.getEmergencyRoomPatients().size(); i++) {
+			Patient patient = patients.get(i);
+			patientsHashMap.put(patient.getPatientID(), patient);
+		}
 	}
 	
 	/**
-	 * Override method that handles search 
+	 * Override SimulationControlHandler method that handles search 
 	 */
 	@Override
 	public void handleSearch() {

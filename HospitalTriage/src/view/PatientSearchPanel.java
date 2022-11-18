@@ -29,7 +29,7 @@ public class PatientSearchPanel extends JFrame {
 	 * Constructor takes a hash map of patients and displays search box
 	 */
 	public PatientSearchPanel(LinkedHashMap<Integer, Patient> patientsHashMap) {
-		this.patientsHashMap = patientsHashMap;
+		setPatientsHashMap(patientsHashMap);
 
 		FlowLayout layout = new FlowLayout();
 		setLayout(layout);
@@ -66,6 +66,14 @@ public class PatientSearchPanel extends JFrame {
 	}
 
 	/**
+	 * Setter for patientsHashMap
+	 */
+	private void setPatientsHashMap(LinkedHashMap<Integer, Patient> patientsHashMap) {
+		this.patientsHashMap = patientsHashMap;
+		
+	}
+
+	/**
 	 * Class that implements actionListener to handle search button press
 	 * @param e
 	 */
@@ -82,7 +90,7 @@ public class PatientSearchPanel extends JFrame {
 					if (patient != null) {
 						resultLabel.setText("Result: " + patient.toString()); // update result label
 					} else {
-						resultLabel.setText("Error: patient not found (Please eneter another ID)"); // Validate if ID not found
+						resultLabel.setText("Error: " + typedText + " is not found (Please eneter another ID)"); // Validate if ID not found
 					}
 				} catch (Exception exception) { // Validate that field contains numeric value
 					resultLabel.setText(

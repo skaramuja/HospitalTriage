@@ -10,7 +10,8 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 public class EmergencyRoom {
-	private final int MAX_CAPACITY = 100;
+	private final int MAX_CAPACITY = 70;
+	private final int NEW_PATIENTS = 20;
 	private PriorityQueue<Patient> patients = new  PriorityQueue<Patient>();
 	private final int HIGHEST_PRIORITY = 1;
 	private final int LOWEST_PRIORITY = 4;
@@ -19,19 +20,28 @@ public class EmergencyRoom {
 	 * Default constructor with no parameters
 	 */
 	public EmergencyRoom() {
-		addPatientsToER();
+		addPatientsToER(MAX_CAPACITY);
 	}
 	
 	/**
 	 * Generates a random number of patients, assigns a priority, and adds them to the emergency room
+	 * @param maxPatients
 	 */
-	private void addPatientsToER() {
-		int numPatients = (int) (Math.random() * MAX_CAPACITY);
+	private void addPatientsToER(int maxPatients) {
+		int numPatients = (int) (Math.random() * maxPatients) + 1;
 		for (int i = 0; i < numPatients; i++) {
 			int priority = (int) (Math.random() * LOWEST_PRIORITY) + HIGHEST_PRIORITY;
 			Patient patient = new Patient(priority);
 			patients.add(patient);
 		}
+	}
+	
+	/**
+	 * Add new patients to the emergency room
+	 */
+	public void addNewPatientsToER() {
+		int numPatients = (int) (Math.random() * NEW_PATIENTS) + 1;
+		addPatientsToER(numPatients);
 	}
 	
 	/**
